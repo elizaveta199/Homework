@@ -4,6 +4,77 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
+    @Test
+    void playAllGamesInSpeedyGameCase1() {
+        Game1 game = new SpeedyGame(false, 5);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {1, 6, 0, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 1;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playAllGamesInSpeedyGameCase2() {
+        Game1 game = new SpeedyGame(false, 3);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {0, -7, 9, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 2;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playAllGamesInSpeedyGameCase3() {
+        Game1 game = new SpeedyGame(true, 5);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {-6, 6, 0, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 4;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playAllGamesInGameCase1() {
+        Game1 game = new Game1(false);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {1, 4, 0, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playAllGamesInGameCase2() {
+        Game1 game = new Game1(false);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {0, 4, 0, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 1;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playAllGamesInGameCase3() {
+        Game1 game = new Game1(true);
+        GameManager gm = new GameManager(game);
+
+        int[] playersSpeed = {0, 4, -6, 9};
+        int actual = gm.playAllGames(playersSpeed);
+        int expected = 4;
+
+        Assertions.assertEquals(expected, actual);
+    }
 
     @Test
     void isFailedCase1() {
