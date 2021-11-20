@@ -18,4 +18,16 @@ public class GameManager {
         }
         return result;
     }
+
+    public int loser(Movable p1, Movable p2, Game1 game, int rounds) {
+        for (int i = 0; i < rounds; i++) {
+            if (!game.isFailed(p1.getSpeed())) {
+                return -1;
+            } else if (!game.isFailed(p2.getSpeed())) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
 }

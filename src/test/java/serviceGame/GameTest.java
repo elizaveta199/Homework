@@ -4,6 +4,77 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
+
+    @Test
+    void playFirstLoserCase1() {
+        Game1 game = new SpeedyGame(false, 20);
+
+        Movable fastPlayer = new FastPlayer(10, 5);
+        Movable constantPlayer = new ConstantPlayer(20);
+        GameManager gameManager = new GameManager(game);
+
+        int actual = gameManager.loser(fastPlayer, constantPlayer, game, 4);
+        int expected = -1;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playFirstLoserCase2() {
+        Game1 game = new SpeedyGame(false, 19);
+
+        Movable fastPlayer = new FastPlayer(10, 5);
+        Movable constantPlayer = new ConstantPlayer(20);
+        GameManager gameManager = new GameManager(game);
+
+        int actual = gameManager.loser(fastPlayer, constantPlayer, game, 4);
+        int expected = 1;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playFirstLoserCase3() {
+        Game1 game = new SpeedyGame(true, 20);
+
+        Movable fastPlayer = new FastPlayer(10, 5);
+        Movable constantPlayer = new ConstantPlayer(20);
+        GameManager gameManager = new GameManager(game);
+
+        int actual = gameManager.loser(fastPlayer, constantPlayer, game, 4);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playFirstLoserCase4() {
+        Game1 game = new SpeedyGame(false, 20);
+
+        Movable fastPlayer = new FastPlayer(10, 1);
+        Movable constantPlayer = new ConstantPlayer(5);
+        GameManager gameManager = new GameManager(game);
+
+        int actual = gameManager.loser(fastPlayer, constantPlayer, game, 4);
+        int expected = 0;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void playFastSpeed() {
+        FastPlayer fastPlayer = new FastPlayer(10, 5);
+
+        System.out.println(fastPlayer.getSpeed());
+        System.out.println(fastPlayer.getSpeed());
+        System.out.println(fastPlayer.getSpeed());
+        int actual = fastPlayer.getSpeed();
+        System.out.println(actual);
+        int expected = 25;
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     void playAllGamesInSpeedyGameCase1() {
         Game1 game = new SpeedyGame(false, 5);
